@@ -1,0 +1,15 @@
+/node_modules
+/trash
+/src/trash
+/PHP/trash
+/PHP/vendor
+/dist
+/PHP/api/xls
+/PHP/api/models/trash
+/PHP/api/DBconnect.php
+.env
+/php/.env
+.env.development
+RM.md
+.vscode
+.DS_Store

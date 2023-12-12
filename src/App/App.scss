@@ -1,0 +1,180 @@
+$primary-color: #181818;
+$secondary-color: #1f1f1f;
+$text-color-primary: #9dddff;
+$text-color-secondary: #b5cfa9;
+$text_color_function: "#dcdcab";
+$text-color-significant-primary: #ce9178;
+$text-color-significant-secondary: #6b9955;
+
+$font: "Menlo, Monaco, 'Courier New', monospace";
+
+
+// *{ font-family: "Courier", Courier, monospace;   }
+
+* {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
+html {
+
+
+
+    // h1 {
+    //     color: $text-color-primary;
+    // }
+
+    // p {
+    //     color: $text-color-primary;
+    // }
+
+    body {
+
+        margin: 0;
+        width: 100%;
+        height: 100%;
+
+        #root {
+
+
+
+            .App {
+
+                position: fixed;
+                //background-position: center center;
+                // background-attachment: fixed;
+                // background-repeat: no-repeat;
+                // background-size: cover;
+
+                height: 100%;
+                width: 100%;
+
+
+                .navbar {
+                    grid-area: navbar;
+                }
+
+                .desktop {
+                    grid-area: desktop;
+                }
+
+                .rightSide {
+                    grid-area: rightSide;
+                }
+
+                .leftSide {
+                    grid-area: leftSide;
+
+                }
+
+                .foot {
+                    grid-area: foot;
+                }
+
+
+            }
+
+            .App__landscape {
+
+                @media screen and (orientation:landscape) {
+
+
+                    display: grid;
+                    grid-template-columns: 25% 50% 25%;
+                    grid-template-rows: 50px 43% 43% 1fr;
+                    grid-template-areas:
+                        "navbar    navbar    navbar    "
+                        "leftSide  desktop rightSide "
+                        "leftSide  desktop rightSide "
+                        "foot      foot      foot      "
+                }
+
+            }
+
+            .App__portrait {
+
+
+                @media screen and (orientation:portrait) {
+
+
+                    display: grid;
+                    grid-template-rows: 10% 45% 20% 20% 1fr;
+                    grid-template-columns: 100%;
+                    grid-template-areas:
+                        "   navbar   "
+                        "   desktop  "
+                        "   rightSide"
+                        "   leftSide "
+                        "   foot     "
+                }
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+    }
+
+}
+
+
+.desktop {
+    // background-color: $secondary-color;
+    height: 100%;
+    width: 100%;
+    //margin: auto;
+    //align-content: center;
+    //justify-content: center;
+    //align-items: center;
+    //flex-direction: column;
+    //display: flex;
+    //position: relative;
+
+}
+
+.navbar {
+    // background-color: $primary-color;
+
+    height: 100%;
+    width: 100%;
+}
+
+.leftSide {
+    // background-color: $primary-color;
+
+
+    position: relative;
+    // height: 100%;
+    // width: 100%;
+}
+
+.rightSide {
+    //  background-color: $primary-color;
+    position: relative;
+
+    height: 100%;
+    width: 100%;
+
+}
+
+.foot {
+    // background-color: $primary-color;
+
+    height: 100%;
+    width: 100%;
+}

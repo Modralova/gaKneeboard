@@ -1,0 +1,19 @@
+$primary-color: #181818;
+$secondary-color: #1f1f1f;
+$text-color-primary: #9dddff;
+$text-color-secondary: #b5cfa9;
+$text-color-significant-primary: #ce9178;
+$text-color-significant-secondary: #6b9955;
+
+.text-color-primary{
+
+   color: $text-color-primary;
+}
+
+
+.navbar__button{
+   position: relative;
+   right : 40%;
+   border-radius: 2px;
+
+}

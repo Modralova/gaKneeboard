@@ -1,0 +1,24 @@
+
+$primary-color: #181818;
+$secondary-color:#1f1f1f;
+$text-color-primary:#9dddff;
+$text-color-secondary: #b5cfa9;
+$text-color-significant-primary:#ce9178;
+$text-color-significant-secondary:#6b9955;
+
+
+
+.desktop__about{
+    
+   
+    padding: 30px;
+    margin: 50px;
+    background-color: $secondary-color;
+   // background-color: rgba(255, 255, 255,0.5);
+    font-size: 10px;
+    color: black;
+        width: 100%;
+        height: 100%;
+
+    //color: #ff7f7f
+}

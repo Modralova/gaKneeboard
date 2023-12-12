@@ -1,0 +1,9 @@
+.text-color-primary {
+  color: #9dddff;
+}
+
+.navbar__button {
+  position: relative;
+  right: 40%;
+  border-radius: 2px;
+}

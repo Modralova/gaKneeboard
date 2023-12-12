@@ -1,0 +1,29 @@
+
+
+/* .section .draggable .dragged */
+
+
+.draggable{
+
+    cursor: move;
+}
+
+.draggable:hover{
+
+    opacity: .7;
+
+}
+
+.draggable:active{
+
+    opacity: 1;
+
+}
+
+.dragged
+{
+opacity: .01;
+cursor: pointer;
+
+
+}
