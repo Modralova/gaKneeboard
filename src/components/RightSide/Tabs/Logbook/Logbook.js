@@ -2,7 +2,7 @@
 import React, { useEffect, useState} from "react";
 import { Box, Card, Typography } from "@mui/material";
 import axios from "axios";
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch, useSelector } from "react-redux";
 
 import { setExpa } from "../../../../Store/LogbookSlice";
@@ -102,9 +102,9 @@ useEffect(()=>{
 
 
 
-        { 
+        {  
 
-           logbook && logbook.toReversed().map((fligth, f) => {
+         !logbook?  <CircularProgress/> : logbook.toReversed().map((fligth, f) => {
 
                 return <Card key={f}
                     sx={{ mt: 0, mb: 1, mx: 5, p: 3, fontSize: 10 }}

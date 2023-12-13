@@ -1,0 +1,61 @@
+{
+    "tabs": {
+        "leftTabLabels": {
+            "TAF": "WHEATHER",
+            "LINKS": "LINKS",
+            "NOTEPAD": "NOTEPAD"
+        },
+        "rightTabLabels": {
+            "ROUTE": "ROUTE",
+            "LOAD": "LOAD",
+            "LOGBOOK": "LOGBOOK"
+        }
+    },
+    "menus": {
+        "leftMenuLables": {
+            "HOME": "HOME",
+            "ToV": "ToV",
+            "LOAD": "L&B",
+            "LOGBOOK": "LOGBOOK"
+        },
+        "rightMenuLables": {
+            "profile": "profile",
+            "account": "my account",
+            "logout": "logout"
+        }
+    },
+    "ToV": {
+        "msg": {
+            "empty": "route storage empty",
+            "update": {
+                "a": "slice",
+                "b": "updated",
+                "query": {
+                    "a": "Slice",
+                    "b": "already exists. Do you want to update it?"
+                }
+            },
+            "erase": {
+                "a": "slice",
+                "b": "erased",
+                "query": {
+                    "a": "Do you want to erase slice",
+                    "b": "from route?",
+                    "c": "This operation excludes the entire route. Do you want to continue?"
+                }
+            },
+            "added": {
+                "a": "Slice",
+                "b": "added"
+            },
+            "noSlice": {
+                "a": "Slice",
+                "b": "doesn't exist"
+            }
+        }
+    },
+    "dialog": {"update":"Updating",
+        "positive": "yes",
+        "negative": "no"
+    }
+}

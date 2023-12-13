@@ -15,15 +15,13 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { setProfileView } from '../../Store/viewSlice';
 import {fetchLogged }from "../../Store/loginSlice";
-
-
-import {  Paper, ThemeProvider, CssBaseline } from "@mui/material";
+import { useTranslation } from 'react-i18next';
 
 
 
 const  MenuAppBar = () => {
 
-
+  const [t,i18n] = useTranslation("global");
   const dispatch = useDispatch();
   // const outerTheme = useTheme();
 
@@ -147,10 +145,11 @@ const  MenuAppBar = () => {
                 onClose={handleClose}
               >
                
-                <MenuItem onClick={handleClose}><Link to="/" >HOME</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/ntp" >NTP</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/load" >LOAD</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/logbook" >LOGBOOK</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/" >{t("menus.leftMenuLables.HOME")}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/logbook" >{t("menus.leftMenuLables.LOGBOOK")}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/ntp" >{t("menus.leftMenuLables.ToV")}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/load" >{t("menus.leftMenuLables.LOAD")}</Link></MenuItem>
+                
               </Menu>
 
             </div>

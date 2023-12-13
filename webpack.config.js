@@ -20,6 +20,8 @@ let report = true;
 
 
 const config = {
+
+
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -88,7 +90,8 @@ const config = {
     }
 };
 
-module.exports = () => {
+
+module.exports = (webpackEnv) => {
 
     if (isProduction) {
         config.mode = 'production';

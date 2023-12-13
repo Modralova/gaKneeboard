@@ -15,7 +15,7 @@ const config = {
 }
 
 
-const TAF = await axios.get(process.env.WHEATHER_URI_PROXY, config).then(res => { return res.data })
+const TAF = await axios.get("http://localhost:8080/api/taf", config).then(res => { return res.data })
 
 const Wheather = () => {
 

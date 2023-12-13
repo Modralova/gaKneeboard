@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Wheather from "./Tabs/Wheather/Wheather"
+import { useTranslation } from 'react-i18next';
 
 
 import notam from "../../images/n_logo_dins.gif";
@@ -51,6 +52,7 @@ function a11yProps(index) {
 export default function LeftSide() {
 
   const [value, setValue] = React.useState(0);
+  const [t,i18n] = useTranslation("global");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -65,9 +67,9 @@ export default function LeftSide() {
           textColor="secondary"
           indicatorColor="secondary"
         >
-          <Tab label="TAF" />
-          <Tab label="LINKI" />
-          <Tab label="NOTATKI" />
+          <Tab label={t("tabs.leftTabLabels.TAF")} />
+          <Tab label={t("tabs.leftTabLabels.LINKS")} />
+          <Tab label={t("tabs.leftTabLabels.NOTEPAD")} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>

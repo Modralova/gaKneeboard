@@ -7,13 +7,9 @@ import Box from '@mui/material/Box';
 import Route from './Tabs/Route/Route';
 import Logbook from './Tabs/Logbook/Logbook';
 
+import { useTranslation } from 'react-i18next';
+
 import { useSelector } from "react-redux";
-// import store from "../../Store/ReduxStore";
-// import { addSection, removeSection, routeUpdate, alertQuery, setAlert } from "../../Store/ReduxReducers"
-
-import { ThemeProvider } from "@mui/material";
-import RouteTheme from "./Tabs/Route/Route_theme";
-
 
 
 function CustomTabPanel(props) {
@@ -36,10 +32,10 @@ function CustomTabPanel(props) {
       {value === index &&
 
         (
-          <Box sx={{ p: 0 ,heigth: 630, overflow: "scroll"}}>
-          {/* <Typography>{children}</Typography> */}
-          {children}
-        </Box>
+          <Box sx={{ p: 0, heigth: 630, overflow: "scroll" }}>
+            {/* <Typography>{children}</Typography> */}
+            {children}
+          </Box>
         )
       }
     </div>
@@ -62,7 +58,9 @@ function a11yProps(index) {
 }
 
 
-export default function RightSide() { 
+export default function RightSide() {
+
+  const [t, i18n] = useTranslation("global");
 
   const routeState = useSelector(state => state.routeReducer).route;
   const logbookTimesState = useSelector(state => state.expaReducer);
@@ -99,6 +97,7 @@ export default function RightSide() {
 
 
   return (
+
     <Box className="rightSide" sx={{ py: 2, width: '90%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value}
@@ -106,55 +105,60 @@ export default function RightSide() {
           aria-label="rightSide"
           textColor="secondary"
           indicatorColor="secondary"
-        > 
-        
-          <Tab label="ROUTE" />
-          <Tab label="LOAD" />
-          <Tab label="LOGBOOK" />
-         
+        >
+
+          <Tab label={t("tabs.rightTabLabels.ROUTE")} />
+          <Tab label={t("tabs.rightTabLabels.LOAD")} />
+          <Tab label={t("tabs.rightTabLabels.LOGBOOK")} />
+
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}  >
         <Box sx={{ p: 3 }}>
-         
-           <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px",  justifyContent:"space-between",fontSize: 12   }}>
-              <Typography variant="c3" component="p">total distance: </Typography>
-              <Typography id="AP" variant="c1" component="p" >&nbsp; {total.distance}nm </Typography>
-            </span>  
-             <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px",  justifyContent:"space-between",fontSize: 12   }}>
-              <Typography variant="c3" component="p">total time: </Typography>
-              <Typography id="AP" variant={"c1"} component="p" >&nbsp; {time}</Typography>
-            </span>
-         
+
+          <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px", justifyContent: "space-between", fontSize: 12 }}>
+            <Typography variant="c3" component="p">total distance: </Typography>
+            <Typography id="AP" variant="c1" component="p" >&nbsp; {total.distance}nm </Typography>
+          </span>
+          <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px", justifyContent: "space-between", fontSize: 12 }}>
+            <Typography variant="c3" component="p">total time: </Typography>
+            <Typography id="AP" variant={"c1"} component="p" >&nbsp; {time}</Typography>
+          </span>
+
         </Box>
         <Route />
-       
+
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1} />
       <CustomTabPanel value={value} index={2} >
-     
-      <Box sx={{ p: 3}}>
-          
-            <span style={{ display: "flex", flexDirection: "row",  padding: "0px 30px 0px 30px",  justifyContent:"space-between",fontSize: 12  }}>
-              <Typography variant="c3" component="p">total air time: </Typography>
-              <Typography id="AP" variant={"c1"} component="p" >&nbsp; {logbookTimesState.airTime}</Typography>
-            </span> 
-            <span style={{ display: "flex", flexDirection: "row",  padding: "0px 30px 0px 30px",  justifyContent:"space-between",fontSize: 12  }}>
-              <Typography variant="c3" component="p">total taxi time: </Typography>
-              <Typography id="AP" variant={"c1"} component="p" >&nbsp; {logbookTimesState.taxiTime}</Typography>
-            </span>  
-            <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px",  justifyContent:"space-between",fontSize: 12 }}>
-              <Typography variant="c3" component="p">total block time: </Typography>
-              <Typography id="AP" variant={"c1"} component="p" >&nbsp; {logbookTimesState.blockTime}</Typography>
-            </span>   
-          
+
+        <Box sx={{ p: 3 }}>
+
+          <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px", justifyContent: "space-between", fontSize: 12 }}>
+            <Typography variant="c3" component="p">total air time: </Typography>
+            <Typography id="AP" variant={"c1"} component="p" >&nbsp; {logbookTimesState.airTime}</Typography>
+          </span>
+
+
+          <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px", justifyContent: "space-between", fontSize: 12 }}>
+            <Typography variant="c3" component="p">total taxi time: </Typography>
+            <Typography id="AP" variant={"c1"} component="p" >&nbsp; {logbookTimesState.taxiTime}</Typography>
+          </span>
+
+
+          <span style={{ display: "flex", flexDirection: "row", padding: "0px 30px 0px 30px", justifyContent: "space-between", fontSize: 12 }}>
+            <Typography variant="c3" component="p">total block time: </Typography>
+            <Typography id="AP" variant={"c1"} component="p" >&nbsp; {logbookTimesState.blockTime}</Typography>
+          </span>
+
         </Box>
-       
-        <Logbook/>
+
+        <Logbook />
+
       </CustomTabPanel>
-   
-      
-    
+
+
+
     </Box>
   );
 }

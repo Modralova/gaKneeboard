@@ -13,7 +13,7 @@
     "start": "webpack serve"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jan Mędrala",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.8",
@@ -42,10 +42,12 @@
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.4.0",
     "dotenv-webpack": "^8.0.1",
+    "i18next": "^23.7.8",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^5.3.4",
     "redux": "^4.2.1",

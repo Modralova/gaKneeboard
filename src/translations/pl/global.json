@@ -1,0 +1,60 @@
+{
+    "tabs": {
+        "leftTabLabels": {
+            "TAF": "POGODA",
+            "LINKS": "LINKI",
+            "NOTEPAD": "NOTATKI"
+        },
+        "rightTabLabels": {
+            "ROUTE": "TRASA",
+            "LOAD": "ZAŁADUNEK",
+            "LOGBOOK": "KSIĄŻKA"
+        }
+    },
+    "menus": {
+        "leftMenuLables": {
+            "HOME": "STRONA DOMOWA",
+            "ToV": "NAWIGACYJNY TRÓJKĄT PRĘDKOŚCI",
+            "LOAD": "MASA I WYWAŻENIE",
+            "LOGBOOK": "KSIĄŻKA LOTÓW"
+        },
+        "rightMenuLables": {
+            "profile": "profil",
+            "account": "moje konto",
+            "logout": "wyloguj"
+        }
+    },
+    "ToV": {
+        "msg": {
+            "empty": "schowek opróżniony",
+            "update": {
+                "a": "odcinek",
+                "b": "zaktualizowany",
+                "query": {
+                    "a": "już istnieje. Czy chcesz go uaktualnić?"
+                }
+            },
+            "erase": {
+                "a": "odcinek",
+                "b": "usunięty",
+                "query": {
+                    "a": "Czy chcesz usunąć odcinek",
+                    "b": "z trasy?",
+                    "c": "Ta operacja spowoduje skasowanie całej trasy. Czy chcesz kontynuować?"
+                }
+            },
+            "added": {
+                "a": "Odcinek",
+                "b": "dodany"
+            },
+            "noSlice": {
+                "a": "Odcinek",
+                "b": "nie istnieje"
+            }
+        }
+    },
+    "dialog": {"update":"Aktualizacja",
+        "positive": "tak",
+        "negative": "nie"
+    }
+}

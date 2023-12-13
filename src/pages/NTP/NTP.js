@@ -17,6 +17,7 @@ import { routeSave } from "../../Store/outputRouteSlice";
 
 import { Instrument, img } from "./components/canvas/Instrument";
 import * as fNTP from "./functions/NTP_functions";
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -99,6 +100,7 @@ const NTP = () => {
     const routeOutput = useSelector(state => state.outputReducer).route;
     const alertState = useSelector(state => state.alertReducer);
     const idState = useSelector(state => state.idReducer);
+    const [t,i18n] = useTranslation("global");
 
 
     const themeState = useSelector(store => store.themeReducer).theme;
@@ -286,7 +288,7 @@ const NTP = () => {
 
             dispatch(routeSave({ newRoute: newRoute }));    // dane do wydruku
 
-            dispatch(setAlert({ issue: "success", message: `Odcinek ${section.id} dodany` }));
+            dispatch(setAlert({ issue: "success", message: `${t("ToV.msg.added.a")} ${section.id} ${t("ToV.msg.added.b")}` }));
 
 
         } else {
@@ -297,7 +299,7 @@ const NTP = () => {
                 showQuery: true,
                 issue: "UPDATE_SECTION",
 
-                message: `${section.id} już istnieje. Czy chcesz go uaktualnić?`,
+                message: `${t("ToV.msg.update.query.a")} ${section.id} ${t("ToV.msg.update.query.b")}`,
 
                 data: { ...section }
 
@@ -327,7 +329,7 @@ const NTP = () => {
 
             if (routeState.length === 0) {
 
-                dispatch(setAlert({ issue: "info", message: `Schowek jest pusty` }));
+                dispatch(setAlert({ issue: "info", message: t("ToV.msg.empty") }));
 
                 return;
 
@@ -337,7 +339,7 @@ const NTP = () => {
                 {
                     showQuery: true,
                     issue: "ROUTE_DELETE",
-                    message: "Ta operacja spowoduje skasowanie całej trasy. Czy chcesz kontynuować?",
+                    message: t("ToV.msg.erase.query.c"),
 
                 }
 
@@ -348,14 +350,14 @@ const NTP = () => {
 
             if (INDEX < 0) {
 
-                dispatch(setAlert({ issue: "info", message: `Odcinek ${from}=>${to} nie istnieje` }));
+                dispatch(setAlert({ issue: "info", message: `${t("ToV.msg.noSlice.a")} ${from}=>${to} ${t("ToV.msg.noSlice.b")}` }));
 
             } else {
 
                 dispatch(alertQuery({
 
                     issue: "REMOVE_SECTION",
-                    message: `Czy chcesz usunąć odcinek ${from}=>${to} z trasy?`,
+                    message: `${t("ToV.msg.erase.query.a")} ${from}=>${to} ${t("ToV.msg.erase.query.b")}`,
                     data: { id: routeState[INDEX].id }
 
                 }));
@@ -438,7 +440,7 @@ const NTP = () => {
                     gridTemplateColumns: 'repeat(9, 10%)',
                     gridTemplateAreas:
 
-                        `"ifrom  ito      .      .    .     .  canvas canvas canvas    "
+                        `"ifrom  ifrom     ito      ito    .     .  canvas canvas canvas    "
                     "iδm    .        .      .    .     .  canvas canvas canvas    "
                     "iδb    .        .      .    .     .  canvas canvas canvas    "
                     "idm    odn      okw   .    .     .  canvas canvas canvas    "
