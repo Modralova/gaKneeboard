@@ -274,7 +274,7 @@ if ($method == "GET" && $_SERVER["REQUEST_URI"] ==  "/api/LOAD/planes") {
 
 //SAVE TO XLSX
 
-if ($method == "GET" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save") {
+if ($method == "GET" && $_SERVER["REQUEST_URI"] ==  "/api/tov/save") {
 
 
 
@@ -293,7 +293,7 @@ if ($method == "GET" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save") {
 
 
 
-if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save_") {    ///////////////////////////////
+if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/tov/save_") {    ///////////////////////////////
 
 
 
@@ -395,7 +395,7 @@ if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save_") {    ////
     unset($export);
 }
 
-if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save") {  /////////////////////////////////////////////////////////
+if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/tov/save") {  /////////////////////////////////////////////////////////
 
     $payload = json_decode(file_get_contents("php://input"));
 

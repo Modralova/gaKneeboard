@@ -400,7 +400,7 @@ const NTP = () => {
 
     const handleSaveRoute = event => {
 
-        const url = "http://localhost:8080/api/NTP/save";
+        const url = "http://localhost:8080/api/tov/save";
 
         const config = {
 

@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Wheather from "./Tabs/Wheather/Wheather"
+import Weather from "./Tabs/Weather/Weather"
 import { useTranslation } from 'react-i18next';
 
 
@@ -73,7 +73,7 @@ export default function LeftSide() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Wheather />
+        <Weather />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <Box sx={{ m: 5 }}>

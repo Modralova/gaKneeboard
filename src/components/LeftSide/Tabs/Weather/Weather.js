@@ -17,13 +17,13 @@ const config = {
 
 const TAF = await axios.get("http://localhost:8080/api/taf", config).then(res => { return res.data })
 
-const Wheather = () => {
+const Weather = () => {
 
     const themeState = useSelector(store => store.themeReducer).theme;
 
     return (
 
-        <Box className="wheather" key={"0"} sx={{ my: 5, mx: "auto", height: 440 }}>
+        <Box className="weather" key={"0"} sx={{ my: 5, mx: "auto", height: 440 }}>
             {/* color:"#b5cfa9" */}
             {TAF && TAF.map((report, i) => {
 
@@ -54,4 +54,4 @@ const Wheather = () => {
 
 }
 
-export default Wheather;
+export default Weather;

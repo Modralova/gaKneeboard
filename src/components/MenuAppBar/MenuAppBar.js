@@ -7,8 +7,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
+
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -147,7 +146,7 @@ const  MenuAppBar = () => {
                
                 <MenuItem onClick={handleClose}><Link to="/" >{t("menus.leftMenuLables.HOME")}</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link to="/logbook" >{t("menus.leftMenuLables.LOGBOOK")}</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/ntp" >{t("menus.leftMenuLables.ToV")}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/tov" >{t("menus.leftMenuLables.ToV")}</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link to="/load" >{t("menus.leftMenuLables.LOAD")}</Link></MenuItem>
                 
               </Menu>

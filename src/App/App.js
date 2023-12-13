@@ -103,7 +103,7 @@ const App = () => {
                 <Route path="/logbook">
                   <LogBook />
                 </Route>
-                <Route path="/ntp">
+                <Route path="/tov">
                   <NTP />
                 </Route>
                 <Route path="/load">
