@@ -2,7 +2,7 @@
 
 This project is extension of the first version written as simple HTML files with  NodeJS, Express backend and  MongoDB database.
 This is my second project using React JS  with Material-UI. The backend is written in PHP with  mySQL database.
-First versions of the tools were written in C++ and Java 2021. This one has been started in June 2023.
+First versions of the tools were written in C++ and Java in 2021. This one has been started in June 2023.
 
 ### The toolkit includes:
 
