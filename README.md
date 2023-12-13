@@ -16,3 +16,9 @@ The toolkit includes:
 Screen of general view:
 
 ![alt text](https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_1.png)
+
+
+
+XLSX file view :
+
+![alt text](https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_2.png)

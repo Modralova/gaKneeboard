@@ -444,6 +444,8 @@ if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save") {  ///////
         ];
     }
 
+    $slice_count = strlen($value->from . "=>" . $value->to);
+
 
     $sheetName = "sheet1";
 
@@ -469,7 +471,7 @@ if ($method == "POST" && $_SERVER["REQUEST_URI"] ==  "/api/NTP/save") {  ///////
             $export->addField($sheetName, $rowNumber + 1, $col, $row[$col], $style);
         }
     }
-    $export->setColumnWidth($sheetName, 0,strlen("ICAO=>ICAO") + 2);
+    $export->setColumnWidth($sheetName, 0, $slice_count + 2);
     $export->setColumnWidth($sheetName, 1,strlen("NKDG:") + 2); 
     $export->setColumnWidth($sheetName, 2, strlen("000°") + 1);
     $export->setColumnWidth($sheetName, 3, strlen("00 00 00") + 2);
