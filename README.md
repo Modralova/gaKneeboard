@@ -21,4 +21,7 @@ Screen of general view:
 
 XLSX file view :
 
-![alt text](https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_2.png)
+<p align="center">
+<img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_2.png" width="500"/>
+</p>
+
