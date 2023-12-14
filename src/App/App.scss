@@ -85,6 +85,8 @@ html {
 
             .App__landscape {
 
+                @media screen and (orientation:portrait) {visibility: "none";}
+
                 @media screen and (orientation:landscape) {
 
 
@@ -102,25 +104,19 @@ html {
 
             .App__portrait {
 
-
+                @media screen and (orientation:landscape) {visibility: "none";}
                 @media screen and (orientation:portrait) {
 
 
                     display: grid;
-                    grid-template-rows: 10% 45% 20% 20% 1fr;
                     grid-template-columns: 100%;
+                    grid-template-rows: 5% 70% 25%  1fr;
                     grid-template-areas:
-                        "   navbar   "
-                        "   desktop  "
-                        "   rightSide"
-                        "   leftSide "
-                        "   foot     "
+                        " navbar"
+                        " desktop"
+                        " desktop"
+                        " foot "
                 }
-
-
-
-
-
 
             }
 
@@ -134,21 +130,15 @@ html {
 
 
 .desktop {
-    // background-color: $secondary-color;
+   
     height: 100%;
     width: 100%;
-    //margin: auto;
-    //align-content: center;
-    //justify-content: center;
-    //align-items: center;
-    //flex-direction: column;
-    //display: flex;
-    //position: relative;
+   
 
 }
 
 .navbar {
-    // background-color: $primary-color;
+ 
 
     height: 100%;
     width: 100%;
@@ -159,12 +149,11 @@ html {
 
 
     position: relative;
-    // height: 100%;
-    // width: 100%;
+    
 }
 
 .rightSide {
-    //  background-color: $primary-color;
+   
     position: relative;
 
     height: 100%;
@@ -173,7 +162,7 @@ html {
 }
 
 .foot {
-    // background-color: $primary-color;
+
 
     height: 100%;
     width: 100%;

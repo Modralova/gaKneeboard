@@ -98,7 +98,9 @@ export default function RightSide() {
 
   return (
 
-    <Box className="rightSide" sx={{ py: 2, width: '90%' }}>
+    <Box className="rightSide" sx={{ py: 2, width: '90%'
+
+    }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value}
           onChange={handleChange}

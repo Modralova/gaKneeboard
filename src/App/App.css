@@ -39,6 +39,12 @@ html body #root .App .foot {
   grid-area: foot;
 }
 
+@media screen and (orientation: portrait) {
+  html body #root .App__landscape {
+    visibility: "none";
+  }
+}
+
 @media screen and (orientation: landscape) {
   html body #root .App__landscape {
     display: grid;
@@ -48,12 +54,18 @@ html body #root .App .foot {
   }
 }
 
+@media screen and (orientation: landscape) {
+  html body #root .App__portrait {
+    visibility: "none";
+  }
+}
+
 @media screen and (orientation: portrait) {
   html body #root .App__portrait {
     display: grid;
-    grid-template-rows: 10% 45% 20% 20% 1fr;
     grid-template-columns: 100%;
-    grid-template-areas: "   navbar   " "   desktop  " "   rightSide" "   leftSide " "   foot     ";
+    grid-template-rows: 5% 70% 25%  1fr;
+    grid-template-areas: " navbar" " desktop" " desktop" " foot ";
   }
 }
 

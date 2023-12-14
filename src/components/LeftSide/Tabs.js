@@ -59,8 +59,14 @@ export default function LeftSide() {
   };
 
   return (
-    <Box className="leftSide" sx={{ py: 2, width: '90%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box className="leftSide" sx={{ py: 2, width: '90%', 
+   
+    
+    }}>
+      <Box sx={{ borderBottom: 1, 
+        borderColor: 'divider' 
+       
+        }}>
         <Tabs value={value}
           onChange={handleChange}
           aria-label="basic tabs example"

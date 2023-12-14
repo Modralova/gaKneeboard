@@ -1,16 +1,64 @@
 $primary-color: #181818;
-$secondary-color:#1f1f1f;
-$text-color-primary:#9dddff;
+$secondary-color: #1f1f1f;
+$text-color-primary: #9dddff;
 $text-color-secondary: #b5cfa9;
-$text-color-significant-primary:#ce9178;
-$text-color-significant-secondary:#6b9955;
+$text-color-significant-primary: #ce9178;
+$text-color-significant-secondary: #6b9955;
 
 
 
-.desktop__home{
+.home {
 
-    // background-color: $secondary-color;
-    color: $text-color-secondary;
-    font-size: 10px;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 
+    @media screen and (orientation:portrait) {
+
+        margin-top: 0px;
+        margin-left: 10%;
+        margin-right: 10%;
+        height: 600px;
+        width: 80%;
+        overflow: scroll;
+
+    }
+
+
+    .weather-paper {
+
+        position: relative;
+
+        @media screen and (orientation:portrait) {
+
+
+            width: 450%;
+
+        }
+
+
+
+        color: $text-color-secondary;
+        font-size: 10px;
+
+        #significant {
+
+
+
+            width: 100%;
+            height: 100%;
+
+            @media screen and (orientation:portrait) {
+
+
+                margin-top: 0px;
+                width: 250%;
+                height: 250%;
+
+            }
+
+
+        }
+    }
 }

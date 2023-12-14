@@ -420,7 +420,13 @@ const NTP = () => {
     return (
 
 
-        <Box className="NTP" sx={{ marginY: '40px', padding: 3 }}>
+        <Box className="NTP" sx={{ marginY: '40px',
+         padding: 3,
+         "@media screen and (orientation: portrait)": {
+            marginY: "0px"
+         }
+        
+         }}>
 
             <Toasts open={alertState.show}
             />

@@ -17,9 +17,11 @@ import LOAD from "../pages/LOAD/LOAD";
 import LogBook from "../pages/LOGBOOK/LOGBOOK";
 import Settings from "../Account/Profile/Profile";
 import { useSelector, useDispatch } from "react-redux";
+import Desktop from "../components/Desktop/Desktop/Desktop";
 
 
-
+import RouterGroupLandscape from "./RouterGroupLandscape";
+import RouterGroupPortrait from "./RouterGroupPortrait";
 import "./App.min.css";
 
 import darkTheme from "../styles/MUI_darkTheme";
@@ -84,16 +86,22 @@ const App = () => {
       }
 
       {loginState.logged && viewState.mainView &&
+
         <Router>
-          <div className="App App__landscape App__portrait">
+
+          <RouterGroupLandscape className="App App__landscape"/>
+          <RouterGroupPortrait className="App App__portrait"/>
+
+          {/* <div className="App App__landscape App__portrait">
             <Toasts open={alertState.show} />
-
-
-
             <MenuAppBar />
+
 
             <LeftSide />
             <RightSide />
+
+
+
 
             <main className="desktop" >
               <Switch>
@@ -109,14 +117,22 @@ const App = () => {
                 <Route path="/load">
                   <LOAD />
                 </Route>
+                <Route path="/desktop">
+                  <Desktop/>
+                </Route>
                 <Route path="*">
                   <NotFound />
                 </Route>
               </Switch>
             </main>
             <Foot />
-          </div>
+          </div> */}
+
+
         </Router>
+
+
+
       }
 
       {viewState.profileView &&
