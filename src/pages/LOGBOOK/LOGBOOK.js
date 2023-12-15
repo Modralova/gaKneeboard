@@ -1,7 +1,7 @@
-import React, {useState, useRef} from "react";
-import { useSelector} from "react-redux";
+import React, { useState, useRef } from "react";
+import { useSelector } from "react-redux";
 
-import { Box, Paper} from "@mui/material";
+import { Box, Paper } from "@mui/material";
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -24,40 +24,40 @@ let auxStyle = {
 export let logbook = new Object();
 
 logbook.IDs = [
-    
+
     ["lbr1", " "],
-    ["iD","date", "DATE","yyyy-mm-dd"],
+    ["iD", "date", "DATE", "yyyy-mm-dd"],
     ["lDep", "departure:"],
     ["lArr", "arrival:",],
-    ["dT","departure_time", "TIME","hh:mm"],
-    ["dP","departure_place", "PLACE","ICAO"],
-    ["aP","arrival_place", "PLACE","ICAO"],
-    ["aT","arrival_time", "TIME","hh:mm"],
+    ["dT", "departure_time", "TIME", "hh:mm"],
+    ["dP", "departure_place", "PLACE", "ICAO"],
+    ["aP", "arrival_place", "PLACE", "ICAO"],
+    ["aT", "arrival_time", "TIME", "hh:mm"],
     ["lAc", "aircraft:"],
-    ["iTp","aircraft_model", "TYPE","C-152"],
-    ["iRg","aircraft_registration", "REGISTRATION","SP-XYZ"],
+    ["iTp", "aircraft_model", "TYPE", "C-152"],
+    ["iRg", "aircraft_registration", "REGISTRATION", "SP-XYZ"],
     ["lSp", "single pilot:"],
     ["lMp", "multi pilot:"],
-    ["iMp","multi_pilot_flightime", "MULTI PILOT TIME","hh:mm"],
+    ["iMp", "multi_pilot_flightime", "MULTI PILOT TIME", "hh:mm"],
     ["lFt", "FLIGHT TIME:"],
-    ["isE","single_pilot_flightime_single_engine", "SINGLE EGN. TIME","hh:mm"],
-    ["imE","single_pilot_flightime_multi_engine", "MULTI EGN. TIME","hh:mm"],
-    ["oTT","total_time", "TOTAL TIME","hh:mm"],
-    ["iPIC","PIC_name", "PIC name","JOHN SMITH"],
+    ["isE", "single_pilot_flightime_single_engine", "SINGLE EGN. TIME", "hh:mm"],
+    ["imE", "single_pilot_flightime_multi_engine", "MULTI EGN. TIME", "hh:mm"],
+    ["oTT", "total_time", "TOTAL TIME", "hh:mm"],
+    ["iPIC", "PIC_name", "PIC name", "JOHN SMITH"],
     ["lbr2", " "],
     ["lL", "landings:"],
-    ["ilD","landings_day", "DAY","integer"],
-    ["ilN","landings_nigth", "NIGHT","integer"],
+    ["ilD", "landings_day", "DAY", "integer"],
+    ["ilN", "landings_nigth", "NIGHT", "integer"],
     ["lOct", "operational condition time:"],
-    ["iNt","operational_condition_time_nigth", "NIGHT","hh:mm"],
-    ["iIFR","operational_condition_time_ifr", "IFR","hh:mm"],
+    ["iNt", "operational_condition_time_nigth", "NIGHT", "hh:mm"],
+    ["iIFR", "operational_condition_time_ifr", "IFR", "hh:mm"],
     ["lPft", "pilot function time:"],
-    ["aPIC","pilot_function_time_PIC", "PIC","hh:mm"],
-    ["aCp","pilot_function_time_coPilot", "CO-PILOT","hh:mm"],
-    ["aD","pilot_function_time_dual", "DUAL","hh:mm"],
-    ["aI","pilot_function_time_instructor", "INSTRUCTOR","hh:mm"],
-    ["iTk","task", "TASK","A1"],
-    ["bts","bts"]
+    ["aPIC", "pilot_function_time_PIC", "PIC", "hh:mm"],
+    ["aCp", "pilot_function_time_coPilot", "CO-PILOT", "hh:mm"],
+    ["aD", "pilot_function_time_dual", "DUAL", "hh:mm"],
+    ["aI", "pilot_function_time_instructor", "INSTRUCTOR", "hh:mm"],
+    ["iTk", "task", "TASK", "A1"],
+    ["bts", "bts"]
 ];
 
 
@@ -81,18 +81,18 @@ const LogBook = () => {
 
         for (const ID of logbook.IDs) {
 
-            
 
-            ["i", "d", "a","o"].some(char => ID[0].charAt(0) === char) && 
 
-                 setInputs(data =>({
+            ["i", "d", "a", "o"].some(char => ID[0].charAt(0) === char) &&
+
+                setInputs(data => ({
 
                     ...data,
-                    [ID[1]]: logbook[ID[0]].iRef.current.value.replace(/^ | $/g,"").toUpperCase()
-                   
-                 }));
+                    [ID[1]]: logbook[ID[0]].iRef.current.value.replace(/^ | $/g, "").toUpperCase()
 
-    
+                }));
+
+
         }
 
 
@@ -113,39 +113,55 @@ const LogBook = () => {
 
     }
 
-  const   handelAddSectionToRoute = () =>{
+    const handelAddSectionToRoute = () => {
 
 
-    const config = {
+        const config = {
 
-        headers: { "Content-Type": "application/json" }
-    };
+            headers: { "Content-Type": "application/json" }
+        };
 
-    axios.get("http://localhost:8080/api/logbook/read", config).then(res => {
+        axios.get("http://localhost:8080/api/logbook/read", config).then(res => {
 
-        console.log(res.data);
-    });
+            console.log(res.data);
+        });
 
 
-  }
-    
+    }
+
     return (
 
-        <Box className="logbook" sx={{ height: 500, overflow: "auto", marginY: '40px', padding: 3 }}>
+        <Box className="logbook" sx={{
+            height: 500,
+            overflow: "auto",
+            marginY: '40px',
+            padding: 3,
+            p: 5, pt: 5, "@media screen and (orientation:portrait)": {
 
-            <Paper sx={{ p: 5, pt: 5 }}>
+                p: 2, pt: 1,
+                marginY: 0
+            }
+
+
+
+        }}>
+
+            <Paper sx={{
+                p: 5, pt: 5, "@media screen and (orientation:portrait)": {
+
+                    p: 2, pt: 2,
+                }
+            }}>
 
                 <Box
                     id="GRID"
                     sx={{      //https://mui.com/system/grid/#api
                         mt: 0,
-                        // p: 5,
-                        // pt: 5,
                         display: 'grid',
                         gridTemplateRows: 'repeat(18, 1fr)',
                         gridTemplateColumns: 'repeat(4, 20%)',
-                        gridTemplateAreas: 
-`"iD  iPIC iTk ."
+                        gridTemplateAreas:
+                            `"iD  iPIC iTk ."
 "lAc . . . "
 "iTp iRg  . ."
 "lDep  . lArr ."
@@ -183,13 +199,13 @@ const LogBook = () => {
                                         placeholder={cell[3]}
                                         fullWidth={true}
                                         //defaultValue={" "}
-                                        sx={{ gridArea: cell[0]}}
+                                        sx={{ gridArea: cell[0] }}
                                         variant="outlined"
                                         size="small"
 
-                                    onChange={handleChange}
-                                    onInput={handleChange}
-                                    onBlur={handleChange}
+                                        onChange={handleChange}
+                                        onInput={handleChange}
+                                        onBlur={handleChange}
 
                                     />)
                             }

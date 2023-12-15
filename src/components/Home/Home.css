@@ -1,42 +1,21 @@
 .home {
-  position: relative;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  margin-top: 100px;
+  width: 70%;
+  height: 70%;
 }
 
 @media screen and (orientation: portrait) {
   .home {
-    margin-top: 0px;
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 600px;
-    width: 80%;
-    overflow: scroll;
+    margin-top: 40px;
+    width: 100%;
   }
 }
 
 .home .weather-paper {
-  position: relative;
   color: #b5cfa9;
-  font-size: 10px;
-}
-
-@media screen and (orientation: portrait) {
-  .home .weather-paper {
-    width: 450%;
-  }
 }
 
 .home .weather-paper #significant {
   width: 100%;
   height: 100%;
-}
-
-@media screen and (orientation: portrait) {
-  .home .weather-paper #significant {
-    margin-top: 0px;
-    width: 250%;
-    height: 250%;
-  }
 }

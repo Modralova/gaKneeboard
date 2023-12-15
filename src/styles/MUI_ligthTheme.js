@@ -110,7 +110,8 @@ const ligthTheme = createTheme({
                     MuiTextField: {
                         defaultProps: {
                             variant: 'outlined',
-                            margin: 'dense',
+                            //   margin: 'dense',
+                           
                             size: 'small',
                             fullWidth: true,
                             InputLabelProps: { shrink: true }
@@ -123,7 +124,16 @@ const ligthTheme = createTheme({
                         color: "#3f3f3f",
                         margin: 0,
                         padding: 5,
-                        textAlign: "center"
+                        textAlign: "center",
+
+                        "@media screen and (orientation:portrait)": {
+
+                            fontSize: 10,
+                            padding: 5,
+                            paddingLeft: 1,
+                            width: 80,
+
+                        }
 
 
 

@@ -50,7 +50,7 @@ const Login = () => {
 
                 sessionStorage.removeItem("SESS_ID");
                 sessionStorage.removeItem("SESSLOGIN");
-                    
+
                 dispatch(fetchLogged());
 
                 history.push("/");
@@ -87,7 +87,7 @@ const Login = () => {
         axios.post("http://localhost:8080/api/", inputs).then(res => {
 
 
-          
+
 
             setResponse(res.data);
         })
@@ -107,10 +107,15 @@ const Login = () => {
             alignItems: 'center',
             alignContent: "center",
             flexDirection: "column",
-            justifyContent: "center"
+            justifyContent: "center",
+            paddingY: 20,
+
+                
 
         }}>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
+            <form onSubmit={handleSubmit} style={{
+                display: "flex", flexDirection: "column"
+            }} >
                 <Typography>user:</Typography>
                 <OutlinedInput
                     sx={{ width: "300px" }}

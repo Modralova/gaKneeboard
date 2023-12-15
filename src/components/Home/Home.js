@@ -8,15 +8,11 @@ import "./Home.min.css"
 
 const Home = () => {
     return (
-        <Box className="home" sx={{ marginY: '80px',
-        padding: 3,
-        "@media screen and (orientation: portrait)": {
-           marginY: "40px"
-        }
+        <Box className="home" sx={{  marginX: "auto"
        
         }} >
        
-        <Paper className="weather-paper"  sx={{ display: "flex", justifyContent: "center",   mt: 0 }}>
+        <Paper className="weather-paper"  sx={{  display: "flex", justifyContent: "left", padding:3}}>
     
        
                     <img id="significant" src="https://awiacja.imgw.pl/dane_cbpl/SWC_PL_EPWA.GIF"  alt="https://awiacja.imgw.pl/dane_cbpl/SWC_PL_EPWA.GIF" />

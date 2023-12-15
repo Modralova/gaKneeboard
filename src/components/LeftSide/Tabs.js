@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Weather from "./Tabs/Weather/Weather"
+import Weather from "./Tabs/Wheather/Weather"
 import { useTranslation } from 'react-i18next';
 
 

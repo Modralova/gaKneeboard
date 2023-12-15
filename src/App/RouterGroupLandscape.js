@@ -16,11 +16,13 @@ import LogBook from "../pages/LOGBOOK/LOGBOOK";
 import { useSelector, useDispatch } from "react-redux";
 
 function RouterGroupLandscape() {
+
   const alertState = useSelector(state => state.alertReducer);
 
   return (
 
     <div className="App App__landscape">
+      
     <Toasts open={alertState.show} />
 
     <MenuAppBar />

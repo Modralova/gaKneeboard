@@ -23,6 +23,10 @@ html body #root .App .navbar {
   grid-area: navbar;
 }
 
+html body #root .App .chevrons {
+  grid-area: chevrons;
+}
+
 html body #root .App .desktop {
   grid-area: desktop;
 }
@@ -50,7 +54,7 @@ html body #root .App .foot {
     display: grid;
     grid-template-columns: 25% 50% 25%;
     grid-template-rows: 50px 43% 43% 1fr;
-    grid-template-areas: "navbar    navbar    navbar    " "leftSide  desktop rightSide " "leftSide  desktop rightSide " "foot      foot      foot      ";
+    grid-template-areas: "navbar    navbar    navbar    " "leftSide  desktop rightSide " "leftSide  desktop rightSide " "foot      foot      foot     ";
   }
 }
 
@@ -64,8 +68,8 @@ html body #root .App .foot {
   html body #root .App__portrait {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 5% 70% 25%  1fr;
-    grid-template-areas: " navbar" " desktop" " desktop" " foot ";
+    grid-template-rows: 10% 5% 60% 20%  1fr;
+    grid-template-areas: " navbar" "chevrons" " desktop" " desktop" " foot ";
   }
 }
 

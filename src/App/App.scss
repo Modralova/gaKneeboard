@@ -63,6 +63,10 @@ html {
                     grid-area: navbar;
                 }
 
+                .chevrons {
+                    grid-area: chevrons;
+                }
+
                 .desktop {
                     grid-area: desktop;
                 }
@@ -97,7 +101,7 @@ html {
                         "navbar    navbar    navbar    "
                         "leftSide  desktop rightSide "
                         "leftSide  desktop rightSide "
-                        "foot      foot      foot      "
+                        "foot      foot      foot     "
                 }
 
             }
@@ -110,9 +114,10 @@ html {
 
                     display: grid;
                     grid-template-columns: 100%;
-                    grid-template-rows: 5% 70% 25%  1fr;
+                    grid-template-rows: 10% 5% 60% 20%  1fr;
                     grid-template-areas:
                         " navbar"
+                        "chevrons"
                         " desktop"
                         " desktop"
                         " foot "
@@ -131,10 +136,11 @@ html {
 
 .desktop {
    
+    
+
     height: 100%;
     width: 100%;
    
-
 }
 
 .navbar {

@@ -100,7 +100,7 @@ const NTP = () => {
     const routeOutput = useSelector(state => state.outputReducer).route;
     const alertState = useSelector(state => state.alertReducer);
     const idState = useSelector(state => state.idReducer);
-    const [t,i18n] = useTranslation("global");
+    const [t, i18n] = useTranslation("global");
 
 
     const themeState = useSelector(store => store.themeReducer).theme;
@@ -249,7 +249,7 @@ const NTP = () => {
 
     }
 
-   
+
     ///////////////////////////////////
 
     const handelAddSectionToRoute = () => {
@@ -420,19 +420,26 @@ const NTP = () => {
     return (
 
 
-        <Box className="NTP" sx={{ marginY: '40px',
-         padding: 3,
-         "@media screen and (orientation: portrait)": {
-            marginY: "0px"
-         }
-        
-         }}>
+        <Box className="NTP" sx={{
+            marginY: '40px',
+            padding: 3,
+            "@media screen and (orientation:portrait)": {
+
+                p: 2, pt: 1,
+                marginY: 0
+            }
+        }}>
 
             <Toasts open={alertState.show}
             />
             <AppendQuery open={alertState.showQuery} />
 
-            <Paper sx={{ p: 5, pt: 5 }}>
+            <Paper sx={{
+                p: 5, pt: 5, "@media screen and (orientation:portrait)": {
+
+                    pl: 2, pr:4, pt: 2, pb:0,
+                }
+            }}>
 
 
                 {/* <Typography variant="body3" component="p" sx={{ pt:3,pr:3,pb:0,pl:4, mb:0}}>NTP</Typography> */}

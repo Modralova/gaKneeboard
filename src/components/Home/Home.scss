@@ -9,38 +9,34 @@ $text-color-significant-secondary: #6b9955;
 
 .home {
 
-    position: relative;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    margin-top: 100px;
+
+    width: 70%;
+    height: 70%;
 
     @media screen and (orientation:portrait) {
 
-        margin-top: 0px;
-        margin-left: 10%;
-        margin-right: 10%;
-        height: 600px;
-        width: 80%;
-        overflow: scroll;
+        margin-top: 40px;
+        width: 100%;
 
     }
 
 
     .weather-paper {
 
-        position: relative;
-
-        @media screen and (orientation:portrait) {
 
 
-            width: 450%;
+        // @media screen and (orientation:portrait) {
 
-        }
+
+        //     width: 500%;
+
+        // }
 
 
 
         color: $text-color-secondary;
-        font-size: 10px;
+
 
         #significant {
 
@@ -49,14 +45,14 @@ $text-color-significant-secondary: #6b9955;
             width: 100%;
             height: 100%;
 
-            @media screen and (orientation:portrait) {
+            //     @media screen and (orientation:portrait) {
 
 
-                margin-top: 0px;
-                width: 250%;
-                height: 250%;
+            //         margin-top: 0px;
+            //         width: 100%;
+            //         height: 100%;
 
-            }
+            //     }
 
 
         }

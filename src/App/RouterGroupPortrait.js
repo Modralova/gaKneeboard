@@ -76,7 +76,6 @@ const DrawerRightHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
 }));
@@ -86,7 +85,6 @@ const DrawerLeftHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
@@ -127,58 +125,71 @@ function RouterGroupPortrait() {
     return (
         <div className="App App__portrait">
             <Toasts open={alertState.show} />
+
             <MenuAppBar />
-            <Box sx={{ display: 'flex' }}>
-                {/* <CssBaseline /> */}
-                <main className="desktop" >
-                    <Main open={rightOpen} >
-                        {/* <DrawerLeftHeader />  <DrawerRightHeader /> */}
+            <Box sx={{
 
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+            }} className="chevrons">
 
-                        {/* <IconButton
+                <Box open={leftOpen} className="chevronleft">
+                    <IconButton
+                        size="large"
+                        color="info"
                         aria-label="open left drawer"
                         edge="start"
                         onClick={handleDrawerLeftOpen}
                         sx={{ ...(leftOpen && { display: 'none' }) }}
-                    >
-                        <ChevronRightIcon />
-                    </IconButton>
+                    ><ChevronRightIcon /></IconButton>
+
+
+                </Box>
+                <Box open={rightOpen} className="chevronright">
                     <IconButton
+                        size="large"
+                        color="info"
                         aria-label="open right drawer"
                         edge="end"
                         onClick={handleDrawerRightOpen}
                         sx={{ ...(rightOpen && { display: 'none' }) }}
-                    >
-                        <ChevronLeftIcon />
-                    </IconButton> */}
+                    > <ChevronLeftIcon /></IconButton>
 
 
-                        <Switch>
-                            <Route exact path="/">
-                                <Home />
-                            </Route>
-                            <Route path="/logbook">
-                                <LogBook />
-                            </Route>
-                            <Route path="/tov">
-                                <NTP />
-                            </Route>
-                            <Route path="/load">
-                                <LOAD />
-                            </Route>
+                </Box>
 
-                            <Route path="*">
-                                <NotFound />
-                            </Route>
-                        </Switch>
 
-                        <Foot />
+            </Box>
 
 
 
+            <Main className="desktop"
+                sx={{
+                    "@media screen and (orientation:portrait)": {
 
-                    </Main>
-               
+                        marginY: 0
+                    }
+                }}>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/logbook">
+                        <LogBook />
+                    </Route>
+                    <Route path="/tov">
+                        <NTP />
+                    </Route>
+                    <Route path="/load">
+                        <LOAD />
+                    </Route>
+
+                    <Route path="*">
+                        <NotFound />
+                    </Route>
+                </Switch>
+                <Foot />
                 <Drawer
                     sx={{
                         width: drawerWidth,
@@ -199,6 +210,9 @@ function RouterGroupPortrait() {
                     <Divider />
                     <RightSide />
                 </Drawer>
+
+
+
                 <Drawer
                     sx={{
                         width: drawerWidth,
@@ -213,18 +227,13 @@ function RouterGroupPortrait() {
                 >
                     <DrawerLeftHeader>
                         <IconButton onClick={handleDrawerLeftClose}>
-                            {theme.direction === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                     </DrawerLeftHeader>
                     <Divider />
                     <LeftSide />
                 </Drawer>
-                </main>
-            </Box>
-
-
-
-
+            </Main>
         </div>
     )
 }

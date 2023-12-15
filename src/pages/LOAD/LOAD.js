@@ -363,10 +363,17 @@ const LOAD = () => {
     return (
         <Box
             className="LOAD"
-            sx={{ marginY: '80px', padding: 3 }}
+            sx={{ marginY: '80px', padding: 3,  "@media screen and (orientation:portrait)": {
+
+                p: 0, pt: 4,
+                marginY: 0
+            } }}
         >
             <Paper
-                sx={{ p: 5 }}
+                sx={{ p: 5, "@media screen and (orientation:portrait)": {
+
+                    pl: 0, pr:4, pt: 3, pb:2,
+                } }}
             >
 
                 <Box
