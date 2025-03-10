@@ -10,7 +10,7 @@ First versions of the tools were written in C++ and Java in 2021. This one has b
 + Load & Balance calculator with aircraft db
 + pilot's Logbook
 
-#### Screen of general view:
+#### Screens of general view:
 
 ![alt generalView](https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_1.png)
 
@@ -19,6 +19,15 @@ First versions of the tools were written in C++ and Java in 2021. This one has b
 <div style="display: flex; align-items: center; direction: row;">
   <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_3.png" width="250"/>
   <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_4.png" width="2500"/>
+</div>
+</div>
+
+
+
+<div align="center">
+<div style="display: flex; align-items: center; direction: column;">
+  <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/ gaKneeboard_screen_3.png" width="250"/>
+  <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_4.png" width="248"/>
 </div>
 </div>
 
