@@ -15,22 +15,18 @@ First versions of the tools were written in C++ and Java in 2021. This one has b
 
 ![alt generalView](https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_1.png)
 
-<<<<<<< HEAD
+
 <div align="center">
 <div style="display: flex; align-items: center; direction: column;">
   <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_3.png" width="250"/>
-=======
 
 <div align="center">
 <div style="display: flex; align-items: center; direction: row;">
   <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/ gaKneeboard_screen_3.png" width="250"/>
->>>>>>> 199b70aff6f5ed2e3d11e4932c4ad2a7ab1fda26
+
   <img src="https://github.com/Modralova/gaKneeboard/blob/master/screens/gaKneeboard_screen_4.png" width="248"/>
 </div>
 </div>
-
-
-
 
 #### The XLSX file view :
 
