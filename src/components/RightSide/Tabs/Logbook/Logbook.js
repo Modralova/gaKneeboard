@@ -79,7 +79,7 @@ function Logbook() {
       className="logbook"
       key="3"
       sx={{
-        my: 1, mx: 'auto', height: 700, width: 300, overflow:"scroll"
+        my: 1, mx: 'auto', height: 700, width: 400, overflow:"scroll"
       }}
     >
 

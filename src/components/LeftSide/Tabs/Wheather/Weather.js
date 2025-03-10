@@ -24,8 +24,8 @@ function Weather() {
         p: 1,
         my: 1,
         mx: 'auto',
-        height: 800,
-        width: 300,
+        height: 850,
+        width: 400,
         overflow: 'auto',
 
       }}
