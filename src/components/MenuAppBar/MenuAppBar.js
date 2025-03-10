@@ -1,5 +1,5 @@
 import * as React from 'react';
-//import {useTheme} from '@mui/material/styles';
+// import {useTheme} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,84 +11,51 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
-import { setProfileView } from '../../Store/viewSlice';
-import {fetchLogged }from "../../Store/loginSlice";
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 
+import { setProfileView } from '@store/viewSlice';
+import { fetchLogged } from '@store/loginSlice';
 
-const  MenuAppBar = () => {
-
-  const [t,i18n] = useTranslation("global");
+function MenuAppBar() {
+  const [t, i18n] = useTranslation('global');
   const dispatch = useDispatch();
-  // const outerTheme = useTheme();
-
-  const userState = useSelector(state => state.loginReducer);
-  const [page, setPage] = React.useState(() => { return "HOME" });
-  const [auth, setAuth] = React.useState(true);
-  // const [mode, setMode] = React.useState(true);    //https://mui.com/material-ui/customization/dark-mode/
-
-  const [anchorEl_tools, setAnchorEl_tools] = React.useState(null);
-  const [anchorEl_user, setAnchorEl_user] = React.useState(null);
-
-
+  const userState = useSelector((state) => state.loginReducer);
+  const [page, setPage] = React.useState(() => 'HOME');
+  const [anchorElTools, setAnchorElTools] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   React.useEffect(() => {
+    let currentPage = window.location.href.replace(window.location.origin.concat('/api'), '');
 
-    let currentPage = window.location.href.replace(window.location.origin.concat("/"), "")
-
-
-    if (currentPage === "") {
-
-      currentPage = "HOME";
-
+    if (currentPage === '') {
+      currentPage = 'HOME';
     }
 
-    setPage(() => { return currentPage.toUpperCase() });
-
+    setPage(() => currentPage.toUpperCase());
   }, [window.location.href]);
 
-  //window.location.href.replace(window.location.origin.concat("/"), "");
+  // window.location.href.replace(window.location.origin.concat("/"), "");
 
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-
+  const handleLogout = () => {
+    dispatch(fetchLogged());
+    sessionStorage.removeItem('SESS_ID');
+    sessionStorage.removeItem('SESSLOGIN');
   };
 
-  const handleModeChange = (event) => {
-    setMode(event.target.checked);
-    console.log("mode: ", mode);
+  const profileView = () => {
+    dispatch(setProfileView());
   };
-
-  const handleLogout = () =>{
-
-   
-     dispatch(fetchLogged());
-     sessionStorage.removeItem("SESS_ID");
-     sessionStorage.removeItem("SESSLOGIN");
-     
-    
-  }
-
-  const profileView =() =>{
-
-
-     dispatch(setProfileView());
-
-  }
-
 
   const handleMenu = (event) => {
-
     switch (event.currentTarget.ariaLabel) {
-      case "tools":
-        setAnchorEl_tools(event.currentTarget);
+      case 'tools':
+        setAnchorElTools(event.currentTarget);
         break;
 
-      case "user":
-        setAnchorEl_user(event.currentTarget);
+      case 'user':
+        setAnchorElUser(event.currentTarget);
         break;
 
       default:
@@ -96,19 +63,16 @@ const  MenuAppBar = () => {
     }
   };
 
-
   const handleClose = (e) => {
 
-    setPage(e.target.textContent);
+    
 
-    setAnchorEl_user(null);
-    setAnchorEl_tools(null);
-
+    setAnchorElUser(null);
+    setAnchorElTools(null);
   };
 
-
   return (
-  
+
     <nav className="navbar">
 
       <Box sx={{ flexGrow: 1 }}>
@@ -130,7 +94,7 @@ const  MenuAppBar = () => {
               </IconButton>
               <Menu
                 id="menu-tool"
-                anchorEl={anchorEl_tools}
+                anchorEl={anchorElTools}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
@@ -140,70 +104,68 @@ const  MenuAppBar = () => {
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                open={Boolean(anchorEl_tools)}
+                open={Boolean(anchorElTools)}
                 onClose={handleClose}
               >
-               
-                <MenuItem onClick={handleClose}><Link to="/" >{t("menus.leftMenuLables.HOME")}</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/logbook" >{t("menus.leftMenuLables.LOGBOOK")}</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/tov" >{t("menus.leftMenuLables.ToV")}</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to="/load" >{t("menus.leftMenuLables.LOAD")}</Link></MenuItem>
-  
-                
+
+                <MenuItem onClick={handleClose}><Link to="/">{t('menus.leftMenuLables.HOME')}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/logbook">{t('menus.leftMenuLables.LOGBOOK')}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/triangle">{t('menus.leftMenuLables.ToV')}</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/load">{t('menus.leftMenuLables.LOAD')}</Link></MenuItem>
+                {/* <MenuItem onClick={handleClose}><Link to="/framer">{t('menus.leftMenuLables.FRAMER')}</Link></MenuItem> */}
+
               </Menu>
 
             </div>
 
+            <Typography variant="h6" component="div" sx={{ flexGrow: 2, ml: 5 }}>{page === "/#/" ? "HOME" : page.replace("/#/","")}</Typography>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow: 2, ml: 5 }}>{page}</Typography>
+            <Box>
 
-            <Box> <Typography variant="h9" component="div" sx={{ flexGrow: 2, ml: 5 }}>{userState.login}</Typography></Box>
+              <Typography variant="h9" component="div" sx={{ flexGrow: 2, ml: 5 }}>{userState.login}</Typography>
+            </Box>
 
+            <div>
 
-            {auth && (
-              <div>
-               
-                <IconButton
-                  size="large"
-                  aria-label="user"
-                  aria-controls="user-menu"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="user-menu"
-                  anchorEl={anchorEl_user}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl_user)}
-                  onClose={handleClose}
-                >
-                  
-                  <MenuItem onClick={profileView}><Link to="/" >profile</Link></MenuItem>
-                  <MenuItem onClick={handleClose}><Link to="/myAccount" >my account</Link></MenuItem>
-                  <MenuItem onClick={handleLogout}><Link to="/" >logout</Link></MenuItem>
-                
-                </Menu>
-              </div>
-            )}
+              <IconButton
+                size="large"
+                aria-label="user"
+                aria-controls="user-menu"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="user-menu"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleClose}
+              >
+
+                <MenuItem onClick={profileView}><Link to="/">profile</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/myAccount">my account</Link></MenuItem>
+                <MenuItem onClick={handleLogout}><Link to="/">logout</Link></MenuItem>
+
+              </Menu>
+            </div>
+
           </Toolbar>
         </AppBar>
       </Box>
     </nav>
- 
 
   );
 }
 
 export default MenuAppBar;
-

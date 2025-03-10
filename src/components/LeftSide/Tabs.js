@@ -4,17 +4,16 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Weather from "./Tabs/Wheather/Weather"
 import { useTranslation } from 'react-i18next';
 
+import Weather from '@components/LeftSide/Tabs/Wheather/Weather';
 
-import notam from "../../images/n_logo_dins.gif";
-
-
-
+import notam from '../../images/n_logo_dins.gif';
 
 function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const {
+    children, value, index, ...other
+  } = props;
 
   return (
 
@@ -26,10 +25,10 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 0, heigth: 480, overflow: "scroll" }}>
-          {/* <Typography>{children}</Typography> */}
-          {children}
-        </Box>
+      <Box sx={{ p: 0, heigth: 630,width:300  }}>
+        {/* <Typography>{children}</Typography> */}
+        {children}
+      </Box>
       )}
     </div>
   );
@@ -48,34 +47,35 @@ function a11yProps(index) {
   };
 }
 
-
 export default function LeftSide() {
-
   const [value, setValue] = React.useState(0);
-  const [t,i18n] = useTranslation("global");
+  const [t, i18n] = useTranslation('global');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box className="leftSide" sx={{ py: 2, width: '90%', 
-   
-    
-    }}>
-      <Box sx={{ borderBottom: 1, 
-        borderColor: 'divider' 
-       
-        }}>
-        <Tabs value={value}
+    <Box
+      className="leftSide"
+      sx={{ py: 2, width: '90%' }}
+    >
+      <Box sx={{
+        borderBottom: 1,
+        borderColor: 'divider',
+
+      }}
+      >
+        <Tabs
+          value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
           textColor="secondary"
           indicatorColor="secondary"
         >
-          <Tab label={t("tabs.leftTabLabels.TAF")} />
-          <Tab label={t("tabs.leftTabLabels.LINKS")} />
-          <Tab label={t("tabs.leftTabLabels.NOTEPAD")} />
+          <Tab label={t('tabs.leftTabLabels.TAF')} />
+          <Tab label={t('tabs.leftTabLabels.LINKS')} />
+          <Tab label={t('tabs.leftTabLabels.NOTEPAD')} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -83,20 +83,26 @@ export default function LeftSide() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <Box sx={{ m: 5 }}>
-          <a href={"https://www.notams.faa.gov/dinsQueryWeb/"} rel="noreferrer" target="_blank">
+          <a href="https://www.notams.faa.gov/dinsQueryWeb/" rel="noreferrer" target="_blank">
             <img src={notam} alt="notam" width="243px" height="70px" />
           </a>
           <Typography component="p">
-            <a href={"https://www.ais.pansa.pl/publikacje/aip-vfr/"}
-              rel="noreferrer" target="_blank"
-              style={{ textDecoration: "none" }}>
+            <a
+              href="https://www.ais.pansa.pl/publikacje/aip-vfr/"
+              rel="noreferrer"
+              target="_blank"
+              style={{ textDecoration: 'none' }}
+            >
               - AIP
             </a>
           </Typography>
           <Typography component="p">
-            <a href={" https://airspace.pansa.pl/"}
-              rel="noreferrer" target="_blank"
-              style={{ textDecoration: "none" }}>
+            <a
+              href=" https://airspace.pansa.pl/"
+              rel="noreferrer"
+              target="_blank"
+              style={{ textDecoration: 'none' }}
+            >
               - AUP/UUP
             </a>
           </Typography>
@@ -104,10 +110,7 @@ export default function LeftSide() {
           {/* https://pl.sat24.com/pl/forecastimages */}
         </Box>
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-
-
-      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2} />
     </Box>
   );
 }

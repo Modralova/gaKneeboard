@@ -1,31 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { route: [] };
 
-
 const routeOutput = createSlice({
 
+  name: 'route',
+  initialState,
+  reducers: {
 
-    name: 'route',
-    initialState,
-    reducers: {
+    routeSave(state, action) {
 
-
-        routeSave(state, action) {
-
-    
-
-            state.route = [...action.payload.newRoute].toReversed();
-
-           
-        }
-    }
+      state.route = [...action.payload.newRoute].toReversed();
+    },
+  },
 });
 
-
-
-
 export const { routeSave } = routeOutput.actions;
-export default routeOutput.reducer; 
+export default routeOutput.reducer;

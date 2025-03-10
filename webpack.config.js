@@ -5,7 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -15,29 +17,48 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 const Recorder = require('./scripts/recorder')
 const recorder = new Recorder({ path: "./trash/webpackLog" })
 let log = false;
-let report = true;
+let report = false;
 /// recorder
+
 
 
 const config = {
 
-
-    entry: './src/index.js',
+    entry: { bundle: path.resolve(__dirname, './src/index.js') },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        clean: true,
-        //filename: "index.bundle.js"
-        filename: "[name].js"
+        path: path.resolve(__dirname, 'PHP/api/gaKneeboard'),
 
-    }, devtool: "source-map",
+        filename: "[name].js",
+        assetModuleFilename: "[name][ext]",
+        clean: true,
+    },
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "src/"),
+            "@components": path.resolve(__dirname, "src/components/"),
+            "@pages": path.resolve(__dirname, "src/App/pages/"),
+            "@store": path.resolve(__dirname, "src/Store/"),
+            "@translations": path.resolve(__dirname, "src/translations/"),
+        }
+    },
+
+
+    devtool: "source-map",
+    // devtool: "hidden-source-map", // Ukrywa source-map przed użytkownikami
     devServer: {
         port: 8080,
         open: true,
         host: "0.0.0.0",
         // host: 'localhost',
         historyApiFallback: true,
-         static: { directory: path.resolve(__dirname, 'dist') },
-       
+        // historyApiFallback: {
+        //     rewrites: [
+        //         { from: /^\/$/, to: 'localhost:8080/api/' },
+        //         { from: /./, to: 'localhost:8080/api/' }
+        //     ]
+        // },
+        static: { directory: path.resolve(__dirname, 'dist') },
+
         compress: true,
 
         proxy: {
@@ -51,25 +72,51 @@ const config = {
     },
 
     plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+              { from: "public", to: "" }, // Kopiuje zawartość `public/` do `dist/`
+            ],
+          }),
         new HtmlWebpackPlugin({
             template: 'index.html',
+            title: "gaKneeboard",
+            meta: {
+                keywords: "TAF,METAR,GAMET,wind triangle, load, NOTAM, database"
+            },
+            minify: false,
+            inject: true
         }),
 
         new Dotenv(),
 
         new MiniCssExtractPlugin(),
 
-        isProduction &&
-        new BundleAnalyzerPlugin(),
+        // isProduction &&
+        // new BundleAnalyzerPlugin(),
+
+        // new ESLintPlugin({fix: true})
+
 
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        
     ],
     module: {
         rules: [
+            // {
+            // test: /\.js$/,
+            // exclude: /node_modules/,
+            //     loader: 'eslint-loader',
+            //     options: {
+            //         fix: true,
+            //         emitError: true,
+            //         emitWarning: true,
+            //         configFile:"eslint"
+            //     },
+            //   },
             {
                 test: /\.(js|jsx)$/i,
-                loader: 'babel-loader',
+                loader: 'babel-loader'
             },
             {
                 test: /\.css$/i,
@@ -80,7 +127,7 @@ const config = {
                 use: [stylesHandler, 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif)$/i,
                 type: 'asset',
             },
 

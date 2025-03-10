@@ -1,56 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { route: [] };
 
 const routeSlice = createSlice({
 
+  name: 'route',
+  initialState,
+  reducers: {
 
-    name: 'route',
-    initialState,
-    reducers: {
+    routeUpdate(state, action) {
+      state.route = [...action.payload.newRoute];
+    },
 
-        routeUpdate(state, action) {
+    routeDelete(state) {
+      state.route = [];
+    },
 
-            console.log("state: ", state.route)
+    updateSection(state, action) {
+      const toUpdate = { ...action.payload.section };
 
-            state.route = [...action.payload.newRoute];
-            console.log("state: ", state.route)
-        },
+      const INDEX = state.route.indexOf(state.route.find((section) => section.id === toUpdate.id));
 
-        routeDelete(state, action) {
+      const newRoute = [...state.route];
 
-            state.route = [];
+      newRoute[INDEX] = toUpdate;
 
-        },
+      state.route = [...newRoute];
+    },
+    removeSection(state, action) {
+      state.route = [...state.route.filter((section) => section.id !== action.payload.id)];
+    },
 
-        updateSection(state, action) {
-
-         
-
-            let toUpdate = { ...action.payload.section };
-
-            let INDEX = state.route.indexOf(state.route.find(section => section.id === toUpdate.id));
-
-            let newRoute = [...state.route];
-
-            newRoute[INDEX] = toUpdate;
-
-            state.route = [...newRoute];
-
-        },
-        removeSection(state,action){
-
-            console.log("removeSecton: ", action)
-
-           state.route =  [...state.route.filter(section => section.id !== action.payload.id)]
-        }
-
-
-
-    }
+  },
 
 });
 
-
-export const { routeUpdate, routeDelete, updateSection, removeSection } = routeSlice.actions;
-export default routeSlice.reducer; 
+export const {
+  routeUpdate, routeDelete, updateSection, removeSection,
+} = routeSlice.actions;
+export default routeSlice.reducer;

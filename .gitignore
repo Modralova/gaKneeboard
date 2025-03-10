@@ -3,13 +3,15 @@
 /src/trash
 /PHP/trash
 /PHP/vendor
+/PHP/api/gaKneeboard
 /dist
 /PHP/api/xls
 /PHP/api/models/trash
-/PHP/api/DBconnect.php
 .env
 /php/.env
 .env.development
+.env.production
+/public/.env
 RM.md
 .vscode
 .DS_Store

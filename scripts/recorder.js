@@ -7,15 +7,16 @@ const webpackConfig = require('../webpack.config')
 
 module.exports = class Recorder {
 
-    constructor(directory) {
 
-        console.info("recorder directory: ", {
-        path: directory.path
+    constructor(params) {
+
+        console.info("recorder params: ", {
+        path: params.path
         })
-        this.file = `.${directory.path}`
+        this.file = `.${params.path}`
 
-        if (!fs.existsSync(directory.path)){
-            fs.mkdirSync(directory.path, { recursive: true });
+        if (!fs.existsSync(params.path)){
+            fs.mkdirSync(params.path, { recursive: true });
         }
 
     }

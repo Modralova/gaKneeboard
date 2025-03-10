@@ -4,15 +4,15 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 
-
-import LeftSide from "../../LeftSide/Tabs"
-import RightSide from "../../RightSide/Tabs"
-
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+
+import LeftSide from "@components/LeftSide/Tabs"
+import RightSide from "@components/RightSide/Tabs"
 
 
 const drawerWidth = 300;

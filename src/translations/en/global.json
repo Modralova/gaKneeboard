@@ -16,7 +16,8 @@
             "HOME": "HOME",
             "ToV": "TRIANGLE",
             "LOAD": "L&B",
-            "LOGBOOK": "LOGBOOK"
+            "LOGBOOK": "LOGBOOK",
+            "FRAMER": "FRAMER"
         },
         "rightMenuLables": {
             "profile": "profile",

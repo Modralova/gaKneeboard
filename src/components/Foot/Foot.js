@@ -1,14 +1,11 @@
-import React from "react";
+import React from 'react';
 
+function Foot() {
+  return (
 
-const Foot = () => {
-    return ( 
+    <footer className="foot" />
 
-        <footer className="foot">
-            
-        </footer>
-
-     );
+  );
 }
- 
+
 export default Foot;

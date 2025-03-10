@@ -5,6 +5,20 @@ const initialXLS = { route: [] };
 const initialAlerts = { show: false, showQuery: false, message: "", issue: "info", data: {} };
 const initialId = {};
 const initialPlane = { plane: "" };
+const initialRouteName = { routeName: "" };
+
+
+
+const setRouteNameR = (routeName) => {
+
+    return {
+
+        type: "SET_ROUTE_NAME",
+        routeName: routeName
+
+    }
+
+}
 
 
 const planeReducer = (state = initialPlane, action) => {
@@ -55,7 +69,8 @@ const idReducer = (state = initialId, action) => {
 
                 ...state,
 
-                id: state.id = action.id
+                id: state.id = action.id,
+                logbookId: state.logbookId = action.logbookId
 
             }
 
@@ -398,5 +413,6 @@ export {
     setAlert,
     setId,
     setSigns,
-    storeRoute
+    storeRoute,
+    setRouteNameR
 }

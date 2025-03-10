@@ -1,44 +1,56 @@
 <?php
+
+
+use Aspera\Spreadsheet\XLSX\Reader;
+use Aspera\Spreadsheet\XLSX\ReaderConfiguration;
+use Aspera\Spreadsheet\XLSX\ReaderSkipConfiguration;
+
+
+
+
+
+
 class Logbook
 {
 
     private $conn;
-    private $table = 'logbook';
+    private $table = 'Logbook';
 
     private $IDs = [
-        ["date","date NOT NULL"],
-        ["departure_place","varchar(10) DEFAULT NULL"],
-        ["departure_time","time DEFAULT NULL"],
-        ["arrival_place","varchar(10) DEFAULT NULL"],
-        ["arrival_time","time DEFAULT NULL"],
-        ["aircraft_model","varchar(10) DEFAULT NULL"],
-        ["aircraft_registration","varchar(10) DEFAULT NULL"],
-        ["single_pilot_flightime_single_engine","time DEFAULT NULL"],
-        ["single_pilot_flightime_multi_engine","time DEFAULT NULL"],
-        ["multi_pilot_flightime","time DEFAULT NULL"],
-        ["block_time","time DEFAULT NULL"],
-        ["PIC_name","text CHARACTER SET utf8mb3 COLLATE utf8mb3_polish_ci DEFAULT NULL"],
-        ["landings_day","int NOT NULL"],
-        ["landings_nigth","int NOT NULL"],
-        ["operational_condition_time_nigth","time DEFAULT NULL"],
-        ["operational_condition_time_ifr","time DEFAULT NULL"],
-        ["pilot_function_time_PIC","time DEFAULT NULL"],
-        ["pilot_function_time_coPilot","time DEFAULT NULL"],
-        ["pilot_function_time_dual","time DEFAULT NULL"],
-        ["pilot_function_time_instructor","time DEFAULT NULL"],
-        ["task",'varchar(10) DEFAULT NULL'],
-        ["taxi_time","time DEFAULT NULL"],
-        ["air_time","time DEFAULT NULL"]
+        ["id", "int(11) NOT NULL AUTO_INCREMENT",],
+        ["date", "date NOT NULL"],
+        ["departure_place", "varchar(10) DEFAULT NULL"],
+        ["departure_time", "time DEFAULT NULL"],
+        ["arrival_place", "varchar(10) DEFAULT NULL"],
+        ["arrival_time", "time DEFAULT NULL"],
+        ["aircraft_model", "varchar(10) DEFAULT NULL"],
+        ["aircraft_registration", "varchar(10) DEFAULT NULL"],
+        ["single_pilot_flightime_single_engine", "time DEFAULT NULL"],
+        ["single_pilot_flightime_multi_engine", "time DEFAULT NULL"],
+        ["multi_pilot_flightime", "time DEFAULT NULL"],
+        ["block_time", "time DEFAULT NULL"],
+        ["PIC_name", "text CHARACTER SET utf8mb3 COLLATE utf8mb3_polish_ci DEFAULT NULL"],
+        ["landings_day", "int NOT NULL"],
+        ["landings_night", "int NOT NULL"],
+        ["operational_condition_time_night", "time DEFAULT NULL"],
+        ["operational_condition_time_ifr", "time DEFAULT NULL"],
+        ["pilot_function_time_PIC", "time DEFAULT NULL"],
+        ["pilot_function_time_coPilot", "time DEFAULT NULL"],
+        ["pilot_function_time_dual", "time DEFAULT NULL"],
+        ["pilot_function_time_instructor", "time DEFAULT NULL"],
+        ["task", 'varchar(32) DEFAULT NULL'],
+        ["taxi_time", "time DEFAULT NULL"],
+        ["air_time", "time DEFAULT NULL"]
 
     ];
 
     private $AWIDs = [
 
-        ["`id`", "int NOT NULL AUTO_INCREMENT"], 
-        ["`﻿dzień`", "date NOT NULL"],  
+        ["`id`", "int NOT NULL AUTO_INCREMENT"],
+        ["`﻿dzień`", "date NOT NULL"],
         ["`zlecenie na lot`", "varchar(20) DEFAULT NULL"],
         ["`znaki rejestracyjne`",  "varchar(10) DEFAULT NULL"],
-        ["`statek powietrzny`" ,   "varchar(10) DEFAULT NULL"],
+        ["`statek powietrzny`",   "varchar(10) DEFAULT NULL"],
         ["`samolot wielosilnikowy`", "varchar(10) DEFAULT NULL"],
         ["`pilot/uczeń`", "text CHARACTER SET utf8mb3 COLLATE utf8mb3_polish_ci DEFAULT NULL"],
         ["`drugi pilot`", "text CHARACTER SET utf8mb3 COLLATE utf8mb3_polish_ci DEFAULT NULL"],
@@ -80,7 +92,7 @@ class Logbook
         ["`rodzaj lotu`", "varchar(10) DEFAULT NULL"],
         ["`nazwa produktu/usługi`", "varchar(10) DEFAULT NULL"],
         ["`szkolenie`", "varchar(10) DEFAULT NULL"],
-        ["`zad./ćw.`", "varchar(20) DEFAULT NULL"],
+        ["`zad./ćw.`", "varchar(32) DEFAULT NULL"],
         ["`wynik`", "varchar(20) DEFAULT NULL"],
         ["`uwagi`", "varchar(100) DEFAULT NULL"],
     ];
@@ -98,8 +110,8 @@ class Logbook
     public $block_time;
     public $PIC_name;
     public $landings_day;
-    public $landings_nigth;
-    public $operational_condition_time_nigth;
+    public $landings_night;
+    public $operational_condition_time_night;
     public $operational_condition_time_ifr;
     public $pilot_function_time_PIC;
     public $pilot_function_time_coPilot;
@@ -112,36 +124,39 @@ class Logbook
     public function __construct($db)
     {
         $this->conn = $db;
+
+        // var_dump("USER_CONN: ",$this->conn);
     }
 
 
 
-    public function createLogbook(){
+    public function createLogbook()
+    {
 
 
-        $fields = "id int(11) NOT NULL, ";
+        $fields = "";
 
-        foreach($this->IDs as $column){
+        foreach ($this->IDs as $column) {
 
-            $fields = $fields .'`'.$column[0].'`'." ".$column[1].', ';
+            $fields = $fields . '`' . $column[0] . '`' . " " . $column[1] . ', ';
         }
 
-        $fields = substr($fields, 0, -2);
+
+        $fields = $fields . 'PRIMARY KEY (`id`)';
 
 
-        $query = 'CREATE TABLE IF NOT EXISTS  `'. $this->table. '` ( ' . $fields . ')' .
+        $query = 'CREATE TABLE IF NOT EXISTS  `' . $this->table . '` ( ' . $fields . ')' .
 
-            ' ENGINE = MyISAM AUTO_INCREMENT = 11 ' .
-            ' DEFAULT CHARSET = utf8 COLLATE = utf8_polish_ci; '.
+            ' ENGINE=MyISAM AUTO_INCREMENT=1 ' .
+            ' DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_polish_ci; ';
 
-        ' ALTER TABLE `'.$this->table.'`  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT=11; ';
 
+
+        // var_dump( $query);  
 
         $statement = $this->conn->prepare($query);
 
-        $statement->execute();
-      
-
+       $statement->execute();
     }
 
 
@@ -192,6 +207,8 @@ class Logbook
 
     {
 
+        
+
 
         $fields =
             '
@@ -241,7 +258,7 @@ class Logbook
         `rodzaj lotu` varchar(10) DEFAULT NULL,
         `nazwa produktu/usługi` varchar(10) DEFAULT NULL,
         `szkolenie` varchar(10) DEFAULT NULL,
-        `zad./ćw.` varchar(20) DEFAULT NULL,
+        `zad./ćw.` varchar(32) DEFAULT NULL,
         `wynik` varchar(20) DEFAULT NULL,
         `uwagi` varchar(100) DEFAULT NULL,
          UNIQUE KEY `id` (`id`)
@@ -296,15 +313,15 @@ class Logbook
 
         $query = 'CREATE TABLE IF NOT EXISTS `AW` ( ' . $fields . ')' .
 
-            ' ENGINE = MyISAM AUTO_INCREMENT = 11 ' .
-            ' DEFAULT CHARSET = utf8 COLLATE = utf8_polish_ci; ' .
+            ' ENGINE=MyISAM AUTO_INCREMENT=1 ' .
+            ' DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_polish_ci; ' .
 
 
             ' INSERT INTO `AW` ( ' . $cells . ' ) VALUES ' .
 
             $values . '; ';
 
-        ' ALTER TABLE `AW`  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11; ';
+
 
 
         $statement = $this->conn->prepare($query);
@@ -325,24 +342,25 @@ class Logbook
 
     {
 
+
+
+
+
+
         $fields = "";
 
         foreach ($this->IDs as $val) {
 
-          
+            if ($val[0] !== "id") {
 
+                $this->{$val[0]} = $data->{$val[0]};
 
-            $this->{$val[0]} = $data->{$val[0]};
-
-            $fields = $fields  .  $val[0] . " = :" . $val[0] . ", ";
+                $fields = $fields  .  $val[0] . " = :" . $val[0] . ", ";
+            }
         }
 
 
-  
-
-
-
-        $fields = substr($fields, 0, -2);   // obcięcie końcowego substringa ", "
+        $fields = substr($fields, 0, -2);   
 
         unset($val);
 
@@ -350,17 +368,23 @@ class Logbook
         $query = 'INSERT INTO ' . $this->table . ' SET ' . $fields;
 
 
+        // print json_encode($this);
+
+
         $statement = $this->conn->prepare($query);
 
         foreach ($this->IDs as $val) {
 
+            if ($val[0] !== "id") {
 
             $this->{$val[0]} = htmlspecialchars(strip_tags($this->{$val[0]}));
 
 
             $statement->bindParam(":" . $val[0], $this->{$val[0]});
+
+            }
         }
- 
+
         unset($val);
 
         if ($statement->execute()) {
@@ -372,10 +396,78 @@ class Logbook
 
         return false;
 
-       
+
     }
 
-    public function addMenyfrom_AW_XLSX($history, $save)
+
+    public function getRecord($data) {}
+
+    public function updateRecord($data) 
+    
+    {
+
+    
+        $fields = "";
+
+        foreach ($this->IDs as $val) {
+
+            if ($val[0] !== "id") {
+
+                $this->{$val[0]} = $data->{$val[0]};
+
+                $fields = $fields  .  $val[0] . " = :" . $val[0] . ", ";
+            }
+        }
+
+
+
+
+
+
+
+        $fields = substr($fields, 0, -2);   
+
+        unset($val);
+
+
+        $query = 'UPDATE ' . $this->table . ' SET ' . $fields . 
+        
+        ' WHERE id='.$data->id;
+
+
+         print $query;
+
+
+        $statement = $this->conn->prepare($query);
+
+        foreach ($this->IDs as $val) {
+
+            if ($val[0] !== "id") {
+
+            $this->{$val[0]} = htmlspecialchars(strip_tags($this->{$val[0]}));
+
+
+            $statement->bindParam(":" . $val[0], $this->{$val[0]});
+
+            }
+        }
+
+        unset($val);
+
+        if ($statement->execute()) {
+
+            return true;
+        }
+
+        printf("ERROR: %s. \n", $statement->error);
+
+        return false;
+
+
+    }
+
+
+    public function addMenyfrom_AW_XLSX($uploadDir,$save)
     {
 
         /*
@@ -429,9 +521,49 @@ class Logbook
     [47]=>"uwagi"
           */
 
-        //  var_dump($history);
+
+    $reader = new Reader();
+
+    $uploadFile = $uploadDir . basename($_FILES['file']['name']);
+
+    $allowedfileExtensions = array('xlsx');
+
+    $fileNameCmps = explode(".", $uploadFile);
+
+    $fileExtension = strtolower(end($fileNameCmps));
 
 
+    if (in_array($fileExtension, $allowedfileExtensions)) {
+
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
+            echo "File  uploaded.\n";
+        } else {
+
+            echo 'An error occurred while uploading.';
+        }
+    } else {
+
+        echo 'Upload failed as the file type is not acceptable. The allowed file types are:' . implode(',', $allowedfileExtensions);
+    }
+
+
+    $reader->open($uploadFile);
+
+
+    $history = array();
+
+
+    foreach ($reader as $row) {
+
+        $history[] = $row;
+    }
+
+    unset($row);
+
+    $reader->close();
+
+       
+        
         $id = 1;
         $operation = new stdClass();
         $operation->chrono = [];
@@ -463,7 +595,7 @@ class Logbook
                     'arrival_place' => $row[12],
                     'route' => ($row[13] === "nie") ? false : true,
                     'operational_condition_time_ifr' => ($row[20] == "") ? "00:00:00" : $row[20],
-                    'operational_condition_time_nigth' => ($row[22] == "") ? "00:00:00" : $row[22],
+                    'operational_condition_time_night' => ($row[22] == "") ? "00:00:00" : $row[22],
                     'task' => $row[45],
 
                 ];
@@ -501,7 +633,7 @@ class Logbook
 
                         $operation->chrono[] = $fligthData;
                         $operation->landings_day = ($row[22] == "") ? count($operation->chrono) : 0;
-                        $operation->landings_nigth = ($row[22] != "") ? count($operation->chrono) : 0;
+                        $operation->landings_night = ($row[22] != "") ? count($operation->chrono) : 0;
 
                         $operation = (object) array_merge((array)$fligth, (array)$operation);
 
@@ -551,7 +683,7 @@ class Logbook
 
                     $operation->chrono[] = $fligthData;
                     $operation->landings_day = ($row[22] == "") ? count($operation->chrono) : 0;
-                    $operation->landings_nigth = ($row[22] != "") ? count($operation->chrono) : 0;
+                    $operation->landings_night = ($row[22] != "") ? count($operation->chrono) : 0;
 
 
                     $operation = (object) array_merge((array)$fligth, (array)$operation);
@@ -608,8 +740,11 @@ class Logbook
         }
 
 
-        return $Logbook;
+        unlink($uploadFile);
+
+
     }
+
 
 
     private function countFligthTime($chrono)
@@ -697,4 +832,8 @@ class Logbook
 
         return date('H:i:s', $utc);
     }
+
+
+
+
 }
